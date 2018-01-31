@@ -10,14 +10,14 @@ function playSound(audioIndex) {
 			var soundURL = "%@/www/audio/" + sounds[audioIndex] + ".wav";
 			document.location = "wildnpoker:" + "playsound:" + soundURL;
 			playQueue.splice(0, 1);
-			break;*/
+			break;
 		case "Android":
 			Android.playSound(audioIndex);
 			break;
 		default:
 			enyoComponentz.playSound(sounds[audioIndex], audioIndex);
 			return;
-			break;
+			break;*/
 	}
 }
 function loadHTML5Audio() {
