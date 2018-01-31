@@ -2,10 +2,10 @@ function activateButtons() {
 	lastID = "";
 	downEvent = "mousedown";
 	upEvent = "mouseup";
-	/*if( typeof document.body.ontouchstart != "undefined" && deviceType != "webOS") {
+	if( typeof document.body.ontouchstart != "undefined" && deviceType != "webOS") {
 		downEvent = "touchstart";
 		upEvent = "touchend";
-	}*/
+	}
 	buttonHold_ = buttonHold.bind(this);
 	buttonRelease_ = buttonRelease.bind(this);
 	buttonOver_ = buttonOver.bind(this);
