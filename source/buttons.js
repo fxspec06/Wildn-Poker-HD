@@ -2,15 +2,15 @@ function activateButtons() {
 	lastID = "";
 	downEvent = "mousedown";
 	upEvent = "mouseup";
-	if( typeof document.body.ontouchstart != "undefined" && deviceType != "webOS") {
+	/*if( typeof document.body.ontouchstart != "undefined" && deviceType != "webOS") {
 		downEvent = "touchstart";
 		upEvent = "touchend";
-	}
+	}*/
 	buttonHold_ = buttonHold.bind(this);
 	buttonRelease_ = buttonRelease.bind(this);
 	buttonOver_ = buttonOver.bind(this);
 	buttonOut_ = buttonOut.bind(this);
-	menuButtonTap_ = menuButtonTap.bind(this); // COMMENT THIS OUT FOR DESKTOP
+	//menuButtonTap_ = menuButtonTap.bind(this);
 
 	var menuListArray = ["wildnGame", "basicGame", "options", "villo", "exit", "resume", 
 	"startNew", "payouts", "stats", "back", "BET", "yes", "no", "resumeBet", "minus", "plus", 
@@ -33,7 +33,7 @@ function activateButtons() {
 		element.addEventListener(upEvent, buttonRelease_.bind(this));
 		element.addEventListener("mouseover", buttonOver_.bind(this));
 		element.addEventListener("mouseout", buttonOut_.bind(this));
-		element.addEventListener( "click", menuButtonTap.bind(this)); // COMMENT THIS OUT FOR DESKTOP
+		//element.addEventListener( "click", menuButtonTap.bind(this));
 	}
 }
 
