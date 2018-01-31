@@ -6,7 +6,7 @@ function loadSounds() {
 }
 function playSound(audioIndex) {
 	switch(deviceType) {
-		/*case "iOS":
+		case "iOS":
 			var soundURL = "%@/www/audio/" + sounds[audioIndex] + ".wav";
 			document.location = "wildnpoker:" + "playsound:" + soundURL;
 			playQueue.splice(0, 1);
@@ -17,7 +17,7 @@ function playSound(audioIndex) {
 		default:
 			enyoComponentz.playSound(sounds[audioIndex], audioIndex);
 			return;
-			break;*/
+			break;
 	}
 }
 function loadHTML5Audio() {
