@@ -15,6 +15,5 @@ function findDevice(){
 	}
 	return "web";
 }
-//deviceType = findDevice();
-deviceType = "web";
+deviceType = findDevice();
 console.error(deviceType);
