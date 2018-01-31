@@ -292,6 +292,7 @@ MenuAssistant.prototype.openEmail = function() {
 	}
 };
 MenuAssistant.prototype.setUpFreshInstall = function(){
+
 	isInTutorial = true;
 	menuStatus = "tutorial";
 	tutorialType = "about";
@@ -311,7 +312,14 @@ MenuAssistant.prototype.continueTutorial = function(){
 			menuStatus = "tutorial";
 			tutorialType = "villo";
 			numTutorialSections = 7;
+
+			/* ----------------------UNCOMMENT TO ADD VILLO TUTORIAL TO FRESH INSTALL
 			swapScene("menu");
+			*/
+
+			menuStatus = "main";
+			this.welcome(); // ----------------------COMMENT OUT TO ADD VILLO TUTORIAL
+			
 			break;
 		case "villo":
 			this.welcome();
@@ -567,17 +575,22 @@ MenuAssistant.prototype.loadBet = function() {
 MenuAssistant.prototype.welcome = function() {
 	didTutorial = true;
 	isInTutorial = false;
-	if(typeof(freshInstall) === "undefined"){
+	
+	
+		/* UNCOMMENT THIS WRAPPER FOR VILLO REGISTER */
+	//if(typeof(freshInstall) === "undefined"){ 
 		stage.saveOptions();
 		menuStatus = "main";
 		swapScene("menu");
 		return;
-	}
-	this.resetEverything();
+	//}
+	
+	////////// OLD, USED FOR VILLO 'REGISTER' SCREEN ON FRESH INSTALL
+	/*this.resetEverything();
 
 	window.clearTimeout(pOt);
 	menuStatus = "villoRegister";
-	swapScene("menu");
+	swapScene("menu");*/
 };
 MenuAssistant.prototype.showCard = function() {
 	document.getElementById("showCardDiv").innerHTML = '<img alt="" id="showCard" src="images/card-backs/' + cardBack + '.png" style="margin-top:' + verticalMargin + 'px; margin-left:' + horizontalMargin + 'px;">';

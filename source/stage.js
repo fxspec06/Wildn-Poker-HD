@@ -7,6 +7,8 @@
  * 
  */
 
+window.resetStats = false;
+
 function StageAssistant() {
 	this.createNewGame = function(){
 		this.cookie = new wildnGameCookie();
@@ -175,7 +177,7 @@ function StageAssistant() {
 
 var stage = new StageAssistant();
 wildnGameSettings = {};
-wildnGameSettings.versionString = "1.8.0";
+wildnGameSettings.versionString = "1.9.0";
 wildnGameSettings.resumePause = false;
 wildnGameStats = {
 	bgHandsPlayed : 0,
@@ -333,28 +335,28 @@ StageAssistant.prototype.setup = function() {
 	rankList = rankList.concat(rankTier1, rankTier2, rankTier3, rankTier4, rankTier5);
 	console.log(rankList);
 	loadMenu = ["avatar", "preSplash", "load", "BLINK", "CONTINUE", "TAP", "mainMenuTitle"];
-	mainMenu = ["wildnGame", "basicGame", "options", "villo", "exit"];
+	mainMenu = ["wildnGame", "basicGame", "options"/*, "villo", "exit"*/];
 	if(isPaid){mainMenu.concat(["UPGRADE"])}
 	subMenu = ["resume", "startNew", "payouts", "stats", "back", "rank", "next"];
 	areYouSure = ["areYouSure", "yes", "no"];
 	options = ["autoDeal", "sound", "themes", "help", "back"];
-	help = ["how-to-play","what-wins","about-villo","about","back"];
+	help = ["how-to-play","what-wins",/*"about-villo",*/"about","back"];
 	tutorial = ["nextTutorial","skip","villoURL","villoTWITTER","webosworldURL","webosworldTWITTER","email","twitter","wildntwitter"];
 	themes = ["cardPrevious","cardNext","showShadow","backdropPrevious","backdropNext","themesBack"];
 	payouts = ["tapPayouts", "wgPayoutsStatic", "wgPayoutsFlash", "bgPayoutsStatic", "bgPayoutsFlash"];
 	welcome = ["showNew", "TTC", "clearGames"];
-	villoMenu = ["skyLounge", "oceanLounge", "leaderboards","villoOptions","back", "villoLight"];
-	villoOptions = ["backupRestore","back"];
-	backupRestore = ["backup","restore","backupInfo","back"];
-	var backupRestoreExtras = ["cancel","startBackup","startRestore","warnBackup","warnRestore"];
+	//villoMenu = ["skyLounge", "oceanLounge", "leaderboards","villoOptions","back", "villoLight"];
+	//villoOptions = ["backupRestore","back"];
+	//backupRestore = ["backup","restore","backupInfo","back"];
+	//var backupRestoreExtras = ["cancel","startBackup","startRestore","warnBackup","warnRestore"];
 	statMenu = ["WGLAYOUT", "BGLAYOUT", "TAPZONE-LARGE", "RANKLG", "NEXTLG"];
 	statsSmall = ["CURRENTnSMALL", "CURRENTpSMALL", "ALL-TIMEnSMALL", "ALL-TIMEpSMALL"];
 	statsLarge = ["CURRENTnLARGE", "CURRENTpLARGE", "ALL-TIMEnLARGE", "ALL-TIMEpLARGE"];
 	wildnGameObjects = ["divider", "deal", "wild", "winnerBar", "deal-bar"];
 	var betMenu = ["BET", "changeBet", "resumeBet", "minus", "plus"];
-	var villoRegMenu = ["villoRegister","villoRegisterYes","villoRegisterNo"];
+	//var villoRegMenu = ["villoRegister","villoRegisterYes","villoRegisterNo"];
 	horizontalArray = ["card1contents","card2contents","card3contents","card4contents","card5contents"];
-	menuObjectArray = menuObjectArray.concat(mainMenu, subMenu, areYouSure, options, help, themes, payouts, welcome, villoMenu, villoOptions, backupRestore, backupRestoreExtras, betMenu, villoRegMenu, tutorial);
+	menuObjectArray = menuObjectArray.concat(mainMenu, subMenu, areYouSure, options, help, themes, payouts, welcome, /*villoMenu, villoOptions, backupRestore, backupRestoreExtras,*/ betMenu, /*villoRegMenu,*/ tutorial);
 	leaderboardsArray = ["nextLeaderboard", "lastLeaderboard", "all", "latest", "month", "today", "submitNew", "submitZone"];
 
 	var x = randomInt(0, 215);
@@ -478,7 +480,11 @@ function wildnGameCookie(){
 }
 wildnGameCookie.prototype.initialize = function() {
 	var loadGame = true;
-	this.oldGame = localStorage["wildnGame"];
+	
+
+
+	if (window.resetStats) loadGame = false;
+		else this.oldGame = localStorage["wildnGame"];
 	
 	if(!this.oldGame && deviceType == "webOS"){
 		retreiveOldDatabase();
@@ -490,7 +496,7 @@ wildnGameCookie.prototype.initialize = function() {
 		console.log(this.oldGame);
 		this.oldGame = JSON.parse(this.oldGame);
 		if (typeof(this.oldGame.versionString) === "undefined"){
-			this.oldGame.versionString = "1.8.0";
+			this.oldGame.versionString = "1.9.0";
 			freshInstall = true;
 		}
 		if (this.oldGame.versionString != wildnGameSettings.versionString){ //if the versions are not the same...
