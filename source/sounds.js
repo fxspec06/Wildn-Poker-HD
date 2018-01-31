@@ -23,6 +23,9 @@ function playSound(audioIndex) {
 function loadHTML5Audio() {
 	enyoComponentz = {
 		playSound: function(name, index) {
+
+			if (deviceType == "iOS") return;
+			
 			//console.error("playing sound: " + name);
 			if(this.pluginReady){
 				var status = this.$.plugin.callPluginMethod("play", "audio/" + name + ".wav");

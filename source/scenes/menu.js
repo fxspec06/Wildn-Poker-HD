@@ -458,23 +458,17 @@ MenuAssistant.prototype.loadOptions = function() {
 	} else {
 		document.getElementById("autoDealStatusDiv").innerHTML = '<img alt="" id="autoDealStatus" class="autoDealStatus" src="images/menu/options/OFF.png" style="width:68px; margin-top:' + verticalMargin + 'px; margin-left:' + horizontalMargin + 'px;">';
 	}
-	if(doScale) {
-		scale(["autoDealStatus"]);
+	if(wildnGameSettings.sound) {
+		document.getElementById("soundStatusDiv").innerHTML = '<img alt="" id="soundStatus" class="soundStatus" src="images/menu/options/ON.png" style="width:50px; margin-top:' + verticalMargin + 'px; margin-left:' + horizontalMargin + 'px;">';
+	} else {
+		document.getElementById("soundStatusDiv").innerHTML = '<img alt="" id="soundStatus" class="soundStatus" src="images/menu/options/OFF.png" style="width:68px; margin-top:' + verticalMargin + 'px; margin-left:' + horizontalMargin + 'px;">';
 	}
-	document.getElementById("autoDealStatus").addEventListener('click', menuButtonTap.bind(this));
-
-	if (deviceType != "iOS"){
-		if(wildnGameSettings.sound) {
-			document.getElementById("soundStatusDiv").innerHTML = '<img alt="" id="soundStatus" class="soundStatus" src="images/menu/options/ON.png" style="width:50px; margin-top:' + verticalMargin + 'px; margin-left:' + horizontalMargin + 'px;">';
-		} else {
-			document.getElementById("soundStatusDiv").innerHTML = '<img alt="" id="soundStatus" class="soundStatus" src="images/menu/options/OFF.png" style="width:68px; margin-top:' + verticalMargin + 'px; margin-left:' + horizontalMargin + 'px;">';
-		}
-		if(doScale) {
-			scale(["soundStatus"]);
-		}
-		document.getElementById("soundStatus").addEventListener('click', menuButtonTap.bind(this));
+	if(doScale) {
+		scale(["soundStatus", "autoDealStatus"]);
 	}
 	
+	document.getElementById("autoDealStatus").addEventListener('click', menuButtonTap.bind(this));
+	document.getElementById("soundStatus").addEventListener('click', menuButtonTap.bind(this));
 };
 MenuAssistant.prototype.loadVilloOptions = function() {
 	if(wildnGameSettings.vsound) {
