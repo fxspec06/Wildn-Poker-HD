@@ -10,7 +10,7 @@ function activateButtons() {
 	buttonRelease_ = buttonRelease.bind(this);
 	buttonOver_ = buttonOver.bind(this);
 	buttonOut_ = buttonOut.bind(this);
-	//menuButtonTap_ = menuButtonTap.bind(this);
+	menuButtonTap_ = menuButtonTap.bind(this); // COMMENT THIS OUT FOR DESKTOP
 
 	var menuListArray = ["wildnGame", "basicGame", "options", "villo", "exit", "resume", 
 	"startNew", "payouts", "stats", "back", "BET", "yes", "no", "resumeBet", "minus", "plus", 
@@ -33,7 +33,7 @@ function activateButtons() {
 		element.addEventListener(upEvent, buttonRelease_.bind(this));
 		element.addEventListener("mouseover", buttonOver_.bind(this));
 		element.addEventListener("mouseout", buttonOut_.bind(this));
-		//element.addEventListener( "click", menuButtonTap.bind(this));
+		element.addEventListener( "click", menuButtonTap.bind(this)); // COMMENT THIS OUT FOR DESKTOP
 	}
 }
 
